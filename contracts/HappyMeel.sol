@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.9;
+
+// Uncomment this line to use console.log
+// import "hardhat/console.sol";
+
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+
+contract HappyMeel is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
+
+    string setBaseURI;
+    uint256 public price = 0.005 ether;
+    uint256 public maxToken = 2222;
+
+    mapping(address => uint256) public tokens;
+
+    event TokenMinted(address indexed _owner, uint256 indexed _id);
+
+    constructor(string memory baseURI) ERC721("Happy Meel", "HM") {
+        setBaseURI = baseURI;
+    }
+
+    function mint() external payable nonReentrant whenNotPaused {
+        uint256 totalTokens = totalSupply();
+        uint256 token = tokens[msg.sender];
+
+        require(token <= 1, "You already own a token.");
+        require(totalTokens > 0, "No token lefts.");
+        require(msg.value >= price, "You don't have enough ETH to pay a token.");
+
+        _tokenIds.increment();
+        uint256 tokenId = _tokenIds.current();
+
+        _safeMint(msg.sender, tokenId);
+        require(ownerOf(tokenId) == msg.sender, "Mint failed");
+
+        token++;
+
+        emit TokenMinted(msg.sender, tokenId);
+    }
+
+    function _baseURI() internal view virtual override returns (string memory) {
+        return setBaseURI;
+    }
+
+    receive() external payable {}
+
+    fallback() external payable {}
+
+}
