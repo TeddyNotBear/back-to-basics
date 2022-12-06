@@ -9,8 +9,10 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract Garden is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
+    using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
 
@@ -46,6 +48,15 @@ contract Garden is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
 
     function _baseURI() internal view virtual override returns (string memory) {
         return setBaseURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        _requireMinted(tokenId);
+
+        string memory baseURI = _baseURI();
+        return bytes(baseURI).length > 0 
+        ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) 
+        : "";
     }
 
     function withdraw() external onlyOwner {
