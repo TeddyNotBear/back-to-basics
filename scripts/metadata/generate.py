@@ -33,7 +33,7 @@ def generateMetada(dna, id, date):
 def main():
     dt = datetime.now()
     ts = datetime.timestamp(dt)
-    for _ in(i for i in range(10)):
+    for _ in(i for i in range(1, 10, 1)):
         generateMetada(uuid.uuid4().hex, _, ts)
 
 main()
