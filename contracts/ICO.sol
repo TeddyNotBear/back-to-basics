@@ -11,8 +11,8 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract Token is ERC20, ReentrancyGuard, Pausable, Ownable {
-    IERC721Enumerable public immutable garden;
+contract ICO is ERC20, ReentrancyGuard, Pausable, Ownable {
+    IERC721Enumerable public immutable nft;
 
     uint256 public tokenPrice = 0.001 ether;
     // NFT owner can claim 10 My Dream Garden Token
@@ -24,23 +24,23 @@ contract Token is ERC20, ReentrancyGuard, Pausable, Ownable {
 
     mapping(uint256 => bool) public tokenIdsClaimed;
 
-    modifier onlyGardenOwner() {
-        require(garden.balanceOf(msg.sender) > 0, "You must own a NFT");
+    modifier onlyNFTOwner() {
+        require(nft.balanceOf(msg.sender) > 0, "You must own a NFT");
         _;
     }
 
     event TokensClaimed(address indexed _owner, uint256 indexed _amount);
     event TokensBought(address indexed _owner, uint256 indexed _amount);
 
-    constructor(IERC721Enumerable _garden) ERC20("My Dream Garden Token", "MDGT") {
-        garden = _garden;
+    constructor(IERC721Enumerable _nft) ERC20("My Dream Garden Token", "MDGT") {
+        nft = _nft;
     }
 
-    function claim() external nonReentrant whenNotPaused onlyGardenOwner {
-        uint256 balance = garden.balanceOf(msg.sender);
+    function claim() external nonReentrant whenNotPaused onlyNFTOwner {
+        uint256 balance = nft.balanceOf(msg.sender);
         uint256 amount = 0;
         for (uint i = 0; i < balance; i++) {
-            uint256 tokenId = garden.tokenOfOwnerByIndex(msg.sender, i);
+            uint256 tokenId = nft.tokenOfOwnerByIndex(msg.sender, i);
             if(!tokenIdsClaimed[tokenId]) {
                 amount++;
                 tokenIdsClaimed[tokenId] = true;

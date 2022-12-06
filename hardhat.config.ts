@@ -9,6 +9,8 @@ const POLYGON_API_KEY = process.env.POLYGON_API_KEY || "";
 const config: HardhatUserConfig = {
   defaultNetwork: "matci",
   networks: {
+    hardhat: {
+    },
     polygon_mumbai: {
       url: POLYGON_MUMBAI_RPC_URL,
       accounts: [PRIVATE_KEY],

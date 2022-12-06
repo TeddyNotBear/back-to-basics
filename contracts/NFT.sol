@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract Garden is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
+contract NFT is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
     using Strings for uint256;
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
