@@ -1,9 +1,9 @@
 {
-    "dna": "55643f2fc9824554a236bb3efe5a265d",
+    "dna": "8977abfe030041efb7fa24661cd84729",
     "name": "Garden Collection #6",
     "description": "First Garden Collection on Polygon",
-    "image": "ipfs//QmUJrYLXB81sgZmtpvDwXwLiwX7FiNd189CtBDxLmguAjE/6.jpg",
-    "date": 1670331940.085983,
+    "image": "ipfs://QmUJrYLXB81sgZmtpvDwXwLiwX7FiNd189CtBDxLmguAjE/6.jpg",
+    "date": 1670336479.787862,
     "attributes": [
         {
             "trait_value": "DUCK",
