@@ -7,7 +7,6 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
 const POLYGON_API_KEY = process.env.POLYGON_API_KEY || "";
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "matci",
   networks: {
     hardhat: {
     },
