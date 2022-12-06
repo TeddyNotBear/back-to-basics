@@ -1,0 +1,21 @@
+{
+    "dna": "26aec63c7fca4011b067dc5621b03318",
+    "name": "Garden Collection #5",
+    "description": "First Garden Collection on Polygon",
+    "image": "ipfs//QmUJrYLXB81sgZmtpvDwXwLiwX7FiNd189CtBDxLmguAjE/5.jpg",
+    "date": 1670331859.116623,
+    "attributes": [
+        {
+            "trait_value": "DUCK",
+            "value": 3
+        },
+        {
+            "trait_value": "TREE",
+            "value": 2
+        },
+        {
+            "trait_value": "TRASH",
+            "value": "Brown"
+        }
+    ]
+}
