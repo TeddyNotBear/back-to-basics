@@ -24,7 +24,7 @@ contract NFT is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
 
     event TokenMinted(address indexed _owner, uint256 indexed _id);
 
-    constructor(string memory baseURI) ERC721("Garden Collection", "MDG") {
+    constructor(string memory baseURI) ERC721("My Dream Garden Collection", "MDGC") {
         setBaseURI = baseURI;
     }
 
@@ -50,12 +50,12 @@ contract NFT is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
         return setBaseURI;
     }
 
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-        _requireMinted(tokenId);
+    function tokenURI(uint256 _tokenId) public view virtual override returns (string memory) {
+        _requireMinted(_tokenId);
 
         string memory baseURI = _baseURI();
         return bytes(baseURI).length > 0 
-        ? string(abi.encodePacked(baseURI, tokenId.toString(), ".json")) 
+        ? string(abi.encodePacked(baseURI, _tokenId.toString(), ".json")) 
         : "";
     }
 
