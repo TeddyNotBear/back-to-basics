@@ -2,7 +2,7 @@ import { ethers, network } from "hardhat";
 import { verify } from "./utils/verify";
 
 async function main() {
-  const baseURI = 'ipfs://QmWB8fK4KwxTNZFWo6wgZuH9tP3o6ndtSgxiPqU1PUnBHf';
+  const baseURI = 'ipfs://QmW23DXT81LDyjzyPGX2LVhRaW2FhGHKgdKi2p6ieTbHU7/';
   const Garden = await ethers.getContractFactory("Garden");
   const garden = await Garden.deploy(baseURI);
   await garden.deployed();
