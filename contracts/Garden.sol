@@ -16,7 +16,7 @@ contract Garden is ERC721Enumerable, ReentrancyGuard, Pausable, Ownable {
 
     string setBaseURI;
     uint256 public price = 0.005 ether;
-    uint256 public maxToken = 2222;
+    uint256 public maxToken = 10;
 
     mapping(address => uint256) public tokens;
 
