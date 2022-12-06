@@ -7,7 +7,7 @@ def generateMetada(dna, id, date):
         "dna": dna,
         "name": "Garden Collection #" + str(id),
         "description": "First Garden Collection on Polygon",
-        "image": "ipfs//QmUJrYLXB81sgZmtpvDwXwLiwX7FiNd189CtBDxLmguAjE/" + str(id) + ".jpg",
+        "image": "ipfs://QmUJrYLXB81sgZmtpvDwXwLiwX7FiNd189CtBDxLmguAjE/" + str(id) + ".jpg",
         "date": date,
         "attributes" : [
             {

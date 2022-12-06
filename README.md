@@ -1,1 +1,1 @@
-# Shinigami Realm DEX
+# Garden DEX
