@@ -13,6 +13,11 @@ async function main() {
   await ico.deployed();
   console.log(`ICO contract deployed to ${ico.address}`);
 
+  const DEX = await ethers.getContractFactory("DEX");
+  const dex = await DEX.deploy(ico.address);
+  await dex.deployed();
+  console.log(`DEX contract deployed to ${dex.address}`);
+
   if(network.name === "polygon_mumbai") {
     console.log("Verifiying the smart contract...");
     // Wait 6 blocks
@@ -20,6 +25,8 @@ async function main() {
     await verify(nft.address, [baseURI]);
     await ico.deployTransaction.wait(6);
     await verify(ico.address, [nft.address]);
+    await dex.deployTransaction.wait(6);
+    await verify(dex.address, [ico.address]);
   }
 }
 
