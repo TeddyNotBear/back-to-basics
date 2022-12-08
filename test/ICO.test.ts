@@ -57,11 +57,11 @@ describe("All contracts", function () {
     it("Should emit TokensBought event", async () => {
       let amount = 25;
       let price = amount * parseFloat(icoPrice);
-      expect(await ico
+      await expect(ico
         .connect(addr1)
         .buy(amount, { value: ethers.utils.parseEther(price.toString()) }))
-        .to.emit(nft, "TokensBought")
-        .withArgs(owner.getAddress(), amount);
+        .to.emit(ico, "TokensBought")
+        .withArgs(await addr1.getAddress(), amount);
     });
 
   });
