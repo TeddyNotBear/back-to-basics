@@ -33,18 +33,18 @@ describe("NFT contract", function () {
 
     it("Should revert if owner already owns a nft", async () => {
       await nft.mint({ value: ethers.utils.parseEther(price) })
-      expect(await nft.mint({ value: ethers.utils.parseEther(price) })).to.be.revertedWith(
+      await expect(nft.mint({ value: ethers.utils.parseEther(price) })).to.be.revertedWith(
         "You already own max token."
       )
     });
 
     it("Should emit TokenMinted event", async () => {
-      let nftId: number = 2;
-      expect(await nft
+      let nftId: number = 3;
+      await expect(nft
         .connect(addr1)
         .mint({ value: ethers.utils.parseEther(price) }))
         .to.emit(nft, "TokenMinted")
-        .withArgs(owner.getAddress(), nftId);
+        .withArgs(await addr1.getAddress(), nftId);
     });
 
   });
