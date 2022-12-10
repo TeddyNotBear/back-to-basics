@@ -8,7 +8,7 @@ import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import {Link} from 'react-router-dom';
 import "dotenv/config";
 import Head from "next/head";
-import { Mint, Buy } from "../components";
+import { Mint, Buy, Swap } from "../components";
 
 const ALCHEMY_ID = process.env.ALCHEMY_ID || "";
 
@@ -154,6 +154,7 @@ export default function Home() {
         </div>
         <div className="w-1/2">
           <Buy chainId={chainId} library={library} />
+          <Swap chainId={chainId} library={library} />
         </div>
       </div>
     </div>
