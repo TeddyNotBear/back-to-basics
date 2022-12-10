@@ -1,7 +1,8 @@
 import { Contract, providers, utils } from "ethers";
 import { useEffect, useRef, useState } from "react";
-import { Button, Card, CardBody, Input, Stack, Text } from "@chakra-ui/react";
+import { Button, Card, CardBody, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text } from "@chakra-ui/react";
 import { NFT_CONTRACT_ADDRESS, NFT_ABI } from "../constants";
+import { ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
 function Swap({chainId, library}: any) {
     const [loading, setLoading] = useState<boolean>(false);
@@ -28,6 +29,9 @@ function Swap({chainId, library}: any) {
                     <div>
                         <Input size='md' />
                     </div>
+                    <div className="flex justify-center">
+                        <ArrowDownIcon w={8} h={8} color='teal.100'/>
+                    </div>  
                     <div>
                         <Input size='md' />
                     </div>

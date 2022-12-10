@@ -50,9 +50,9 @@ function Mint({chainId, library}: any) {
     };
 
     return (
-      <>
+      <div className="">
         <div className="pb-4">
-            <div className="text-xl font-semibold pb-10">Join the adventure and mint your first Garden !</div>
+            <div className="text-xl font-semibold pb-4">Join the adventure and mint your first Garden !</div>
             <div className="">
                 <Image alt="NFT" src={nft} width={550} />
             </div>
@@ -62,7 +62,7 @@ function Mint({chainId, library}: any) {
           <div className="flex justify-end">? / ? have been minted</div>
         </div>
         <div className="italic">Your balance is <span>X</span> Gardens</div>
-      </>
+      </div>
     )
 }
 
