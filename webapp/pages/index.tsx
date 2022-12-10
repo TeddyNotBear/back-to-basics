@@ -7,6 +7,8 @@ import { Button, HStack, Text, Tooltip } from "@chakra-ui/react";
 import { CheckCircleIcon, WarningIcon } from "@chakra-ui/icons";
 import {Link} from 'react-router-dom';
 import "dotenv/config";
+import Head from "next/head";
+import { Mint, Buy } from "../components";
 
 const ALCHEMY_ID = process.env.ALCHEMY_ID || "";
 
@@ -29,7 +31,7 @@ const providerOptions = {
 const truncateAddress = (address: string) => {
   if (!address) return "No Account";
   const match = address.match(
-    /^(0x[a-zA-Z0-9]{2})[a-zA-Z0-9]+([a-zA-Z0-9]{2})$/
+    /^(0x[a-zA-Z0-9]{3})[a-zA-Z0-9]+([a-zA-Z0-9]{4})$/
   );
   if (!match) return address;
   return `${match[1]}…${match[2]}`;
@@ -113,16 +115,20 @@ export default function Home() {
   }, [provider]);
 
   return (
-    <>
+    <div className="container mx-auto">
+      <Head>
+        <title>GardenSwap</title>
+      </Head>
       <div className="flex p-6 px-10">
         <div className="flex items-center w-1/2">
+          <span className="font-bold text-2xl">👨‍🌾 GardenSwap</span>
         </div>
         <div className="flex justify-end w-1/2 gap-4">
           <HStack>
             {!account ? (
-              <Button onClick={connectWallet}>Connect Wallet</Button>
+              <Button onClick={connectWallet} colorScheme='teal'>Connect Wallet</Button>
             ) : (
-              <Button onClick={disconnect}>Disconnect</Button>
+              <Button onClick={disconnect} colorScheme='teal'>Disconnect</Button>
             )}
           </HStack>
           <div className="flex">
@@ -132,7 +138,7 @@ export default function Home() {
                 {account ? (
                   <CheckCircleIcon color="green" />
                 ) : (
-                  <WarningIcon color="red" />
+                  <WarningIcon color="orange" />
                 )}
               </HStack>
               <Tooltip label={account} placement="right">
@@ -142,6 +148,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+      <div className="flex justify-between p-10 gap-10">          
+        <div className="w-1/2">
+          <Mint chainId={chainId} library={library} />
+        </div>
+        <div className="w-1/2">
+          <Buy chainId={chainId} library={library} />
+        </div>
+      </div>
+    </div>
   )
 }
