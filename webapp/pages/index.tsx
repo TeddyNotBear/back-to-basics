@@ -153,8 +153,8 @@ export default function Home() {
           <Mint chainId={chainId} library={library} />
         </div>
         <div className="w-1/2">
-          <Buy chainId={chainId} library={library} />
-          <Swap chainId={chainId} library={library} />
+          <Buy chainId={chainId} library={library} account={account}/>
+          <Swap chainId={chainId} library={library} account={account}/>
         </div>
       </div>
     </div>

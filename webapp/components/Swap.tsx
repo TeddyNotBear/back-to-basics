@@ -21,11 +21,11 @@ function Swap({chainId, library}: any) {
     };
 
     return (
-      <div className="">
+      <div className="pt-10">
+        <div className="text-xl font-semibold pb-4">Swap</div>
         <Card variant="outline">
             <CardBody>
                 <Stack spacing={4}>
-                    <Text className="">Swap</Text>
                     <div>
                         <Input size='md' />
                     </div>
